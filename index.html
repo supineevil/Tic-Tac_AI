@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <title>Tic Tac Toe</title>
+    <meta name="description" content="Play Tic Tac Toe with AI">
+
+    <meta property="og:title" content=Tic-Tac-Toe with AI>
+</head>
+
+<body>
+    <div id="winner-c">
+        <div id="winner">
+            <div id="close-winner">X</div>
+            <div id="winner-name" class="gradient-text">You Won</div>
+        </div>
+    </div>
+    <div class="player-card lg-player-card" id="human">
+        <h2>YOU</h2>
+        <div id="human-score" class="gradient-text">0</div>
+    </div>
+
+    <div id="board-c">
+        <div class="parent" id="board">
+            <div class="div1 board-cell" id="c00" dataI="0" dataJ="0"></div>
+            <div class="div2 board-cell" id="c01" dataI="0" dataJ="1"></div>
+            <div class="div3 board-cell" id="c02" dataI="0" dataJ="2"></div>
+            <div class="div4 board-cell" id="c10" dataI="1" dataJ="0"></div>
+            <div class="div5 board-cell" id="c11" dataI="1" dataJ="1"></div>
+            <div class="div6 board-cell" id="c12" dataI="1" dataJ="2"></div>
+            <div class="div7 board-cell" id="c20" dataI="2" dataJ="0"></div>
+            <div class="div8 board-cell" id="c21" dataI="2" dataJ="1"></div>
+            <div class="div9 board-cell" id="c22" dataI="2" dataJ="2"></div>
+            <div class="div10 separator"></div>
+            <div class="div11 separator"></div>
+            <div class="div12 separator"></div>
+            <div class="div13 separator"></div>
+            <div class="div14 separator"></div>
+            <div class="div15 separator"></div>
+        </div>
+        <button id="reset">Reset</button>
+    </div>
+
+    <div class="player-card lg-player-card" id="ai">
+        <h2>AI</h2>
+        <div id="ai-score" class="gradient-text">0</div>
+    </div>
+
+    <div id="sm-player-cards">
+        <div class="player-card" id="human">
+            <h2>YOU</h2>
+            <div id="human-score-sm" class="gradient-text">0</div>
+        </div>
+        <div class="player-card" id="ai">
+            <h2>AI</h2>
+            <div id="ai-score-sm" class="gradient-text">0</div>
+        </div>
+    </div>
+
+    <div id="icons-container">
+        <svg id="settings-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-settings">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+            </path>
+        </svg>
+    </div>
+
+    <div id="settings-c">
+        <div id="settings">
+            <div id="settings-close">X</div>
+            <div>
+                <h2 class="gradient-text">Game Mode</h2>
+                <div id="game-modes">
+                    <div id="easy-mod">Noob AI</div>
+                    <div id="average-mod">Average AI</div>
+                    <div id="hard-mod">Ruthless AI</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./game-files/randomPicker.js"></script>
+    <script src="./game-files/checkWinner.js"></script>
+    <script src="./game-files/utils.js"></script>
+    <script src="./game-files/minimax.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
